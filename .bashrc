@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
 ########
 # GitHub
 ########
@@ -39,7 +42,7 @@ function prompt_command() {
   P+="[\$?]"
   P+=" "
   P+="${LIGHT_GREEN}\$(git_name || echo -n \$USER)"
-  P+="${WHITE} ➜ "
+  P+="${WHITE} ➜➜ "
   P+="${LIGHT_BLUE_BOLD}\w"
   P+=" "
   P+="${LIGHT_BLUE}("
@@ -49,7 +52,8 @@ function prompt_command() {
   P+="${COLOUR_OFF}"
   P+="\$"
   P+=" "
-  export PS1=${P[@]}
+  #export PS1=${P[@]}
+  export PS1="\[\033[m\]|\[\033[1;35m\]\t\[\033[m\]|\[\e[1;31m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\W]> \[\e[0m\]"
 }
 
 export PROMPT_COMMAND='prompt_command'
