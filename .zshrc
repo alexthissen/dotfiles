@@ -102,8 +102,12 @@ source $ZSH/oh-my-zsh.sh
 
 #git clone --depth 1 https://github.com/agnoster/agnoster-zsh-theme "$HOME"/.oh-my-zsh/custom/themes/agnoster
 
-apk add zsh_vcs
+sudo apk add zsh_vcs
 autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+precmd() {
+    vcs_info
+}
 
 DISABLE_AUTO_UPDATE=true
 DISABLE_UPDATE_PROMPT=true
