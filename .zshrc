@@ -70,7 +70,11 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=('
+  git
+  zsh-syntax-highlighting
+  zsh-autosuggestions 
+')
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,5 +103,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+#git clone --depth 1 https://github.com/agnoster/agnoster-zsh-theme "$HOME"/.oh-my-zsh/custom/themes/agnoster
+
+autoload -Uz vcs_info
+
 DISABLE_AUTO_UPDATE=true
 DISABLE_UPDATE_PROMPT=true
